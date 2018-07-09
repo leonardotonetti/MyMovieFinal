@@ -1,0 +1,92 @@
+﻿@model IEnumerable<MyMovie.Web.ViewModel.Filme.FilmeViewModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">Filmes</div>
+        <div class="panel-body">
+            <p>
+                <a asp-action="Cadastrar">Cadastrar</a>
+            </p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FilmeId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Nome)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Descricao)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CategoriaId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CadastroUsuarioId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DataCadastro)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AlteracaoUsuarioId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DataAlteracao)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Ativo)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FilmeId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Descricao)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CategoriaId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CadastroUsuarioId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DataCadastro)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AlteracaoUsuarioId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DataAlteracao)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Ativo)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Editar", "Editar", new { id = item.FilmeId }) |
+                                @Html.ActionLink("Detalhes", "Detalhes", new { id = item.FilmeId }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.FilmeId })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="validationErrors">
+                @Html.ValidationSummary()
+            </div>
+        </div>
+    </div>
+</div>

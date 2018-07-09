@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20180704233942_Usuario.cs" />
+    <Compile Remove="Migrations\20180704233942_Usuario.Designer.cs" />
+    <Compile Remove="Migrations\20180704234523_Usuario.cs" />
+    <Compile Remove="Migrations\20180704234523_Usuario.Designer.cs" />
+    <Compile Remove="Migrations\20180708185653_Categoria.cs" />
+    <Compile Remove="Migrations\20180708185653_Categoria.Designer.cs" />
+    <Compile Remove="Migrations\20180708185724_Categoria.cs" />
+    <Compile Remove="Migrations\20180708185724_Categoria.Designer.cs" />
+    <Compile Remove="Migrations\20180708190211_Categoria.cs" />
+    <Compile Remove="Migrations\20180708190211_Categoria.Designer.cs" />
+    <Compile Remove="Migrations\20180708191511_Categoria.cs" />
+    <Compile Remove="Migrations\20180708191511_Categoria.Designer.cs" />
+    <Compile Remove="Migrations\20180708192519_Categoria.cs" />
+    <Compile Remove="Migrations\20180708192519_Categoria.Designer.cs" />
+    <Compile Remove="Migrations\20180708192536_Categoria.cs" />
+    <Compile Remove="Migrations\20180708192536_Categoria.Designer.cs" />
+    <Compile Remove="Migrations\20180708195348_Categoria.cs" />
+    <Compile Remove="Migrations\20180708195348_Categoria.Designer.cs" />
+    <Compile Remove="Migrations\20180709150135_Filme.cs" />
+    <Compile Remove="Migrations\20180709150135_Filme.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="1.50.5" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+  </ItemGroup>
+
+</Project>

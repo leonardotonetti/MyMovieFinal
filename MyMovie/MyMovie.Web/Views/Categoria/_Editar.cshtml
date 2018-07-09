@@ -1,0 +1,43 @@
+﻿@model MyMovie.Web.ViewModel.Categoria.CategoriaViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">Editar</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <form asp-action="Put">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input asp-for="CategoriaId" type="hidden" />
+                        <div class="form-group">
+                            <label asp-for="Nome" class="control-label"></label>
+                            <input asp-for="Nome" class="form-control" />
+                            <span asp-validation-for="Nome" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input asp-for="Ativo" /> @Html.DisplayNameFor(model => model.Ativo)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Editar" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="validationErrors">
+                @Html.ValidationSummary()
+            </div>
+            <div>
+                <a asp-action="Categorias">Voltar</a>
+            </div>
+        </div>
+    </div>
+</div>
+

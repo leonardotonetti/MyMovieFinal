@@ -1,0 +1,86 @@
+﻿@model MyMovie.Web.ViewModel.Filme.FilmeViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">Detalhes</div>
+        <div class="panel-body">
+            <div>
+                <h4>FilmeViewModel</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FilmeId)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.FilmeId)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Nome)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Descricao)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Descricao)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CategoriaId)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Categoria.CategoriaId)
+                    </dd>
+                    <dt>
+                        @Html.DisplayName("Nome Categoria")
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Categoria.Nome)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CadastroUsuarioId)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.CadastroUsuarioId)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DataCadastro)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.DataCadastro)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.AlteracaoUsuarioId)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.AlteracaoUsuarioId)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DataAlteracao)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.DataAlteracao)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Ativo)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Ativo)
+                    </dd>
+                </dl>
+            </div>
+            <div class="validationErrors">
+                @Html.ValidationSummary()
+            </div>
+            <div>
+                @Html.ActionLink("Editar", "Editar", new { id = Model.FilmeId }) |
+                <a asp-action="Filmes">Voltar</a>
+            </div>
+        </div>
+    </div>
+</div>

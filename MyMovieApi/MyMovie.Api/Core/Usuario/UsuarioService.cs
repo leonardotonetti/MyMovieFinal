@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using MyMovie.Api.Data;
+using MyMovie.Api.Extensions;
 using MyMovie.Api.Repository.Usuario;
 
 namespace MyMovie.Api.Core.Usuario
@@ -21,7 +22,10 @@ namespace MyMovie.Api.Core.Usuario
             {
                 var usuarioData = _usuarioRepository.Get(usuario, senha);
                 if (usuarioData == null)
+                {
+                    Notification.SetNotification("Usuario", "Usuário não encontrado");
                     return null;
+                }
 
                 return new Usuario(usuarioData);
             }
@@ -35,9 +39,12 @@ namespace MyMovie.Api.Core.Usuario
         {
             try
             {
-                var usuarioData = _usuarioRepository.Get(novoUsuario.User, novoUsuario.Senha);
+                var usuarioData = _usuarioRepository.Get().FirstOrDefault(x => x.User == novoUsuario.User);
                 if (usuarioData != null)
+                {
+                    Notification.SetNotification("Usuario", "Usuário já cadastrado");
                     return null;
+                }
 
                 var usuarioInserido = _usuarioRepository.Post(new Data.Usuario.Usuario
                 {

@@ -15,6 +15,7 @@ namespace MyMovie.Web.ViewModel.Filme
             ComboCategoria = new SelectList(Enumerable.Empty<object>());
         }
 
+        [Display(Name = "Filme")]
         public int FilmeId { get; set; }
 
         [Required(ErrorMessage = "Informe o Nome")]
@@ -23,14 +24,25 @@ namespace MyMovie.Web.ViewModel.Filme
 
         [Required(ErrorMessage = "Informe a descrição")]
         [MaxLength(100, ErrorMessage = "O Tamanho maxímo do campo Nome é de 100 caracteres")]
+        [Display(Name = "Descrição")]
         public string Descricao { get; set; }
 
         [Required(ErrorMessage = "Informe a Categoria")]
+        [Display(Name = "Categoria")]
         public int CategoriaId { get; set; }
+
+        [Display(Name = "Usuário Cadastro")]
         public int CadastroUsuarioId { get; set; }
+
+        [Display(Name = "Data Cadastro")]
         public DateTime DataCadastro { get; set; }
+
+        [Display(Name = "Usuário Alteração")]
         public int? AlteracaoUsuarioId { get; set; }
+
+        [Display(Name = "Data Alteração")]
         public DateTime? DataAlteracao { get; set; }
+
         public bool Ativo { get; set; }
 
         public CategoriaViewModel Categoria { get; set; }

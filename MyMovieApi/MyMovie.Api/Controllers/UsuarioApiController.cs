@@ -2,6 +2,7 @@
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using MyMovie.Api.Core.Usuario;
+using MyMovie.Api.Extensions;
 
 namespace MyMovie.Api.Controllers
 {
@@ -21,12 +22,17 @@ namespace MyMovie.Api.Controllers
             try
             {
                 var usuarioResponse = _usuarioService.Get(usuario, senha);
-                if (usuarioResponse == null)
-                    return NotFound(new
+                if (Notification.GetNotification() != null)
+                {
+                    var notificationMessage = Notification.GetNotification().Message;
+                    Notification.SetEmpty();
+
+                    return StatusCode((int)HttpStatusCode.NotFound, new
                     {
                         StatusCode = (int)HttpStatusCode.NotFound,
-                        ErrorMessage = "Usuario não encontrado"
+                        ErrorMessage = notificationMessage
                     });
+                }
 
                 return Ok(usuarioResponse);
             }
@@ -53,12 +59,17 @@ namespace MyMovie.Api.Controllers
                     );
 
                 var usuarioResponse = _usuarioService.Post(novoUsuario);
-                if (usuarioResponse == null)
+                if (Notification.GetNotification() != null)
+                {
+                    var notificationMessage = Notification.GetNotification().Message;
+                    Notification.SetEmpty();
+
                     return StatusCode((int)HttpStatusCode.Conflict, new
                     {
                         StatusCode = (int)HttpStatusCode.Conflict,
-                        ErrorMessage = "Usuario já cadastrado"
+                        ErrorMessage = notificationMessage
                     });
+                }
 
                 return Ok(usuarioResponse);
             }

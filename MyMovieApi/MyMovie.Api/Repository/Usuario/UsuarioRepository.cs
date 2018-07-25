@@ -15,6 +15,11 @@ namespace MyMovie.Api.Repository.Usuario
             _myMovieContext = myMovieContext;
         }
 
+        public IEnumerable<Data.Usuario.Usuario> Get()
+        {
+            return _myMovieContext.Usuario;
+        }
+
         public Data.Usuario.Usuario Get(string usuario, string senha)
         {
             return _myMovieContext.Usuario.FirstOrDefault(x => x.User == usuario && x.Senha == senha);

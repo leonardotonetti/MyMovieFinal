@@ -31,12 +31,17 @@ namespace MyMovie.Api.Controllers
             try
             {
                 var usuarioResponse = _usuarioService.Get(usuario.User, usuario.Senha);
-                if (usuarioResponse == null)
-                    return NotFound(new
+                if (Notification.GetNotification() != null)
+                {
+                    var notificationMessage = Notification.GetNotification().Message;
+                    Notification.SetEmpty();
+
+                    return StatusCode((int)HttpStatusCode.NotFound, new
                     {
                         StatusCode = (int)HttpStatusCode.NotFound,
-                        ErrorMessage = "Falha ao entrar! Usuário ou Senha incorretos"
+                        ErrorMessage = notificationMessage
                     });
+                }
 
                 var identity = new ClaimsIdentity(
                     new GenericIdentity(usuario.User, "Login"),
